@@ -101,7 +101,7 @@ def plot_scatter_box(df, x, y,
                   hue=target,height=height,xlim=xlim, ylim=ylim)
     g.plot(sns.scatterplot, sns.boxplot,palette=palette)
 
-def plot_pie_bar_of_category(df,col,colors,title):
+def plot_pie_bar_of_category(df,col,title=None):
     """ plot categorical distributions of col
     as pie and bar.
 
@@ -109,18 +109,15 @@ def plot_pie_bar_of_category(df,col,colors,title):
     ----------
         df : pandas.dataframe
         col : string
-        colors: list
     """
     fig = plt.figure(figsize=(15,7))
     ax1=fig.add_subplot(1,2,1)
     ax2=fig.add_subplot(1,2,2)
     df[col].value_counts().plot(kind='pie',
                                 ax=ax1,
-                                autopct='%1.1f%%',
-                                colors=colors)
+                                autopct='%1.1f%%')
     df[col].value_counts().plot(kind='bar',
-                                ax=ax2,
-                                color=colors)
+                                ax=ax2)
     plt.suptitle(title, y=1, fontsize=15) 
     plt.show()
 
