@@ -2,7 +2,6 @@
 """
 Created on Oct 28 2020
 @author: gari.ciodaro.guerra
-@company: sharcx
 Auxiliar plotting functions.
 """
 import matplotlib as mpl

@@ -50,7 +50,7 @@ def remove_outlier_zscore(df,cols,threshold=2):
     """
     df_in=df.copy()
     for each_col in cols:
-        df_in[each_col+'_zscore']=stats.zscore(df_in[each_col])
+        df_in[each_col+'_zscore']=stats.zscore(df_in[each_col],nan_policy='omit')
         df=df[df_in[each_col+'_zscore']<=threshold]
     return df
 
@@ -65,10 +65,6 @@ def remove_outlier_IsolationForest(df):
         columns=['outlier_pred'],index=df.index)
     df_out=df_out[prediction['outlier_pred']==0]
     return df_out
-
-
-
-#def hot_encoder_df()
 
 def hot_enconder_dict_generator(df,cols):
     """Hotencode columns cols of dataframe df.
